@@ -4,6 +4,9 @@ Question 2: terraform apply
 
 Question 3: Count records
 
+select count(1) from yellow_taxi_trips
+where cast(tpep_pickup_datetime as DATE) = '2021-01-15'
+
 Question 4: Largest tip for each day
 
 Question 5: Most popular destination 
