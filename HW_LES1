@@ -31,3 +31,12 @@ order by t3."cnt" desc
 
 Question 6: Most expensive route 
 
+select*
+from(select "PULocationID", "DOLocationID", avg(total_amount) as avg
+from yellow_taxi_trips
+group by "PULocationID", "DOLocationID"
+order by avg desc) t1
+join zone t2
+on t1."PULocationID"=t2."LocationID"
+join zone t3
+on t1."DOLocationID"=t3."LocationID"
