@@ -16,5 +16,18 @@ order by max(tip_amount) desc
 
 Question 5: Most popular destination 
 
+select*
+from(
+select t1."DOLocationID", count(1) as cnt
+from yellow_taxi_trips t1
+join zone t2
+on t1."PULocationID" = t2."LocationID"
+where cast(t1."tpep_pickup_datetime" as DATE) = '2021-01-14' and t2."Zone" = 'Central Park'
+group by t1."DOLocationID"
+order by cnt desc) t3
+join zone t4
+on t3."DOLocationID"= t4."LocationID"
+order by t3."cnt" desc
+
 Question 6: Most expensive route 
 
